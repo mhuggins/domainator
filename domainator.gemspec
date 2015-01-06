@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'dominatrix/version'
+require 'domainator/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'dominatrix'
-  spec.version       = Dominatrix::VERSION
+  spec.name          = 'domainator'
+  spec.version       = Domainator::VERSION
   spec.authors       = ['Matt Huggins']
   spec.email         = ['matt.huggins@gmail.com']
   spec.summary       = 'Parse the registered domain name from a URL.'
   spec.description   = 'Parse the registered domain name from a URL.'
-  spec.homepage      = 'https://github.com/mhuggins/dominatrix'
+  spec.homepage      = 'https://github.com/mhuggins/domainator'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")

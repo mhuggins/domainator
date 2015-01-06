@@ -1,7 +1,7 @@
 # encoding: UTF-8
 require 'spec_helper'
 
-RSpec.describe Dominatrix do
+RSpec.describe Domainator do
   describe '#parse' do
     shared_examples_for 'a valid URL' do |domain|
       it 'returns the domain when given a string' do
@@ -41,7 +41,7 @@ RSpec.describe Dominatrix do
     describe 'for an nonexistent domain' do
       it 'raises an error' do
         url = 'http://www.example.foo'
-        expect { subject.parse(url) }.to raise_error Dominatrix::NotFoundError
+        expect { subject.parse(url) }.to raise_error Domainator::NotFoundError
       end
     end
 
@@ -55,7 +55,7 @@ RSpec.describe Dominatrix do
       end
 
       it 'raises an error for an invalid URI' do
-        expect { subject.parse('http://www.example.com') }.to raise_error Dominatrix::NotFoundError
+        expect { subject.parse('http://www.example.com') }.to raise_error Domainator::NotFoundError
       end
     end
   end

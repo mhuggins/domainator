@@ -1,4 +1,4 @@
-# Dominatrix
+# Domainator
 
 Extract the registered domain name from a URI.
 
@@ -7,7 +7,7 @@ Extract the registered domain name from a URI.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'dominatrix'
+gem 'domainator'
 ```
 
 And then execute:
@@ -16,44 +16,44 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install dominatrix
+    $ gem install domainator
 
 ## Usage
 
 ### Parsing Domains
 
-There are two approaches to parsing domains with Dominatrix: `Dominatrix.parse`
-and `Dominatrix#parse`.
+There are two approaches to parsing domains with Domainator: `Domainator.parse`
+and `Domainator#parse`.
 
-#### Dominatrix.parse
+#### Domainator.parse
 
-Call the `Dominatrix.parse` method with a URI object or parseable URI string.
+Call the `Domainator.parse` method with a URI object or parseable URI string.
 
 ```ruby
-Dominatrix.parse('http://www.google.com')
+Domainator.parse('http://www.google.com')
 # => "google.com"
 
 uri = URI.parse('http://maps.google.co.uk/map?foo=bar')
-Dominatrix.parse(uri)
+Domainator.parse(uri)
 # => "google.co.uk"
 
-Dominatrix.parse('http://10.0.0.1')
-# => Dominatrix::NotFoundError: no matching domain for "http://10.0.0.1"
+Domainator.parse('http://10.0.0.1')
+# => Domainator::NotFoundError: no matching domain for "http://10.0.0.1"
 ```
 
 A second parameter can alternatively be passed to define the known extensions.
 This parameter should be an `Enumerable` (optimally a `Set`) in which each
 extension contains the leading dot.  By default, this value is set to
-`Dominatrix.default_extensions`.
+`Domainator.default_extensions`.
 
 ```ruby
 extensions = %w[.com .net .co.uk].to_set
 
-Dominatrix.parse('http://www.google.com', extensions)
+Domainator.parse('http://www.google.com', extensions)
 # => "google.com"
 
-Dominatrix.parse('http://www.google.ca', extensions)
-# => Dominatrix::NotFoundError: no matching domain for "http://www.google.ca"
+Domainator.parse('http://www.google.ca', extensions)
+# => Domainator::NotFoundError: no matching domain for "http://www.google.ca"
 ```
 
 If a domain is found, then a string will be returned.  Otherwise, one of the
@@ -64,39 +64,39 @@ following errors will be raised:
   in as an `Enumerable`.
 * `URI::InvalidURIError`: the URI was passed in as a `String` and cannot be
   parsed.
-* `Dominatrix::NotFoundError`: the URI does not contain a valid domain name.
+* `Domainator::NotFoundError`: the URI does not contain a valid domain name.
 
-#### Dominatrix#parse
+#### Domainator#parse
 
-Instantiate a `Dominatrix` object by passing in an optional set of valid domain
-extensions.  By default, this value is set to `Dominatrix.default_extensions`.
+Instantiate a `Domainator` object by passing in an optional set of valid domain
+extensions.  By default, this value is set to `Domainator.default_extensions`.
 
 ```ruby
-dominatrix = Dominatrix.new
-# => #<Dominatrix:0x007fda8428a8f0 @extensions=#<Set: {".ac", ".com.ac", ".gov.ac", ".mil.ac", ... }>>
+domainator = Domainator.new
+# => #<Domainator:0x007fda8428a8f0 @extensions=#<Set: {".ac", ".com.ac", ".gov.ac", ".mil.ac", ... }>>
 
-dominatrix = Dominatrix.new(%w[.com .net].to_set)
-# => #<Dominatrix:0x007fda823861c0 @extensions=#<Set: {".com", ".net"}>>
+domainator = Domainator.new(%w[.com .net].to_set)
+# => #<Domainator:0x007fda823861c0 @extensions=#<Set: {".com", ".net"}>>
 ```
 
 Once instantiated, call the `#parse` method with a URI object or parseable URI
 string.
 
 ```ruby
-dominatrix.parse('http://www.google.com')
+domainator.parse('http://www.google.com')
 # => "google.com"
 
-dominatrix.parse('http://www.google.foo')
-# => Dominatrix::NotFoundError: no matching domain for "http://www.google.foo"
+domainator.parse('http://www.google.foo')
+# => Domainator::NotFoundError: no matching domain for "http://www.google.foo"
 ```
 
 ### Domain Extensions
 
 To see the list of domain extensions built into the gem, call the
-`Dominatrix.default_extensions` method.
+`Domainator.default_extensions` method.
 
 ```ruby
-Dominatrix.default_extensions
+Domainator.default_extensions
 # => #<Set: {".ac", ".com.ac", ".gov.ac", ".mil.ac", ... }>
 ```
 
@@ -107,17 +107,17 @@ and [`Set#delete`](http://www.ruby-doc.org/stdlib-2.1.5/libdoc/set/rdoc/Set.html
 methods.
 
 ```ruby
-Dominatrix.default_extensions.include? '.foo'
+Domainator.default_extensions.include? '.foo'
 # => false
-Dominatrix.default_extensions.include? '.com'
+Domainator.default_extensions.include? '.com'
 # => true
 
-Dominatrix.default_extensions << '.foo'
-Dominatrix.default_extensions.delete('.com')
+Domainator.default_extensions << '.foo'
+Domainator.default_extensions.delete('.com')
 
-Dominatrix.default_extensions.include? '.foo'
+Domainator.default_extensions.include? '.foo'
 # => true
-Dominatrix.default_extensions.include? '.com'
+Domainator.default_extensions.include? '.com'
 # => false
 ```
 
@@ -128,7 +128,7 @@ language support.
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/dominatrix/fork )
+1. Fork it ( https://github.com/[my-github-username]/domainator/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

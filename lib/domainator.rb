@@ -1,8 +1,8 @@
 require 'set'
 require 'uri'
-require 'dominatrix/version'
+require 'domainator/version'
 
-class Dominatrix
+class Domainator
   class NotFoundError < StandardError; end
 
   attr_reader :extensions
